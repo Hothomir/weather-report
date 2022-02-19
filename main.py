@@ -16,10 +16,8 @@ from pyowm.utils import timestamps
 owm = OWM("c7f275b2d16f8329784620d02222e9ee")
 mgr = owm.weather_manager()
 
+one_call = mgr.one_call(lat=39.77317, lon=-75.051277)
 # Here put your city and Country ISO 3166 country codes
-observation = mgr.weather_at_place('Turnersville,US') 
-w = observation.weather
+one_call.forecast_daily[0].temperature('fahrenheit').get('feels_like_morn', None)
 
-temperature = w.temperature("fahrenheit")
-
-print(temperature.temp)
+print(one_call.forecast_daily)
