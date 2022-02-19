@@ -22,4 +22,4 @@ w = observation.weather
 
 temperature = w.temperature("fahrenheit")
 
-print(temperature)
+print(temperature.temp)
