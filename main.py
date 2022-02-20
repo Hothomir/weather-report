@@ -2,6 +2,8 @@
 # - API key from Weather Underground to get weather info.
 # - Output current temperature of home location onto Inky wHAT.
 
+import os, sys
+
 #Inky Libraries
 from inky import InkyWHAT
 from PIL import Image, ImageFont, ImageDraw
