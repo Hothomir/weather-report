@@ -19,10 +19,9 @@ PIXEL_FONT = RESOURCES + "fonts/Pixel12x10.ttf"
 
 owm = OWM("c7f275b2d16f8329784620d02222e9ee")
 mgr = owm.weather_manager()
+weather = mgr.weather_at_place("Turnersville,US").weather
 
-one_call = mgr.one_call(lat=39.77317, lon=-75.051277)
-# Here put your city and Country ISO 3166 country codes
-one_call.forecast_daily[0].temperature('fahrenheit').get('feels_like_morn', None)
+temp_dict_fahrenheit = weather.temperature('fahrenheit')
 
 inky_display = InkyWHAT("yellow")
 inky_display.set_border(inky_display.WHITE)
@@ -37,7 +36,7 @@ w, h = font.getsize(message)
 x = (inky_display.WIDTH / 2) - (w / 2)
 y = (inky_display.HEIGHT / 2) - (w / 2)
 
-#print(one_call.forecast_daily)
+print("Current REAL Temperature: "+temp_dict_fahrenheit+"F")
 
 draw.text((x, y), message, inky_display.YELLOW, font)
 inky_display.set_image(img)
