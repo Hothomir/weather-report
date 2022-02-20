@@ -18,15 +18,18 @@ one_call = mgr.one_call(lat=39.77317, lon=-75.051277)
 # Here put your city and Country ISO 3166 country codes
 one_call.forecast_daily[0].temperature('fahrenheit').get('feels_like_morn', None)
 
-img = Image.new("P", (inky_display.WIDTH, inky.display.HEIGHT))
+inky_display = InkyWHAT("yellow")
+inky_display.set_border(inky_display.WHITE)
+
+img = Image.new("P", (inky_display.WIDTH, inky_display.HEIGHT))
 draw = ImageDraw.Draw(img)
 
 font = ImageFont.truetype(FredokaOne, 24)
 
 message = "Current Temp: 26 F"
 w, h = font.getsize(message)
-x = (inky,display.WIDTH / 2) - (w / 2)
-y = (inky,display.HEIGHT / 2) - (w / 2)
+x = (inky_display.WIDTH / 2) - (w / 2)
+y = (inky_display.HEIGHT / 2) - (w / 2)
 
 #print(one_call.forecast_daily)
 
