@@ -11,6 +11,8 @@ from pyowm import OWM
 from pyowm.utils import config
 from pyowm.utils import timestamps
 
+CURR_DIR = os.path.dirname(os.path.realpath(__file__)) + "/"
+RESOURCES = CURR_DIR + "resources/"
 PIXEL_FONT = RESOURCES + "fonts/Pixel12x10.ttf"
 
 owm = OWM("c7f275b2d16f8329784620d02222e9ee")
