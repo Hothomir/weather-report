@@ -5,6 +5,7 @@
 #Inky Libraries
 from inky import InkyWHAT
 from PIL import Image, ImageFont, ImageDraw
+from fonts import FredokaOne
 
 # pyOWM Libraries
 from pyowm import OWM
