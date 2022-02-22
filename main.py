@@ -40,6 +40,7 @@ draw = ImageDraw.Draw(img)
 font = ImageFont.truetype(PIXEL_FONT, 18)
 font_big = ImageFont.truetype(B_FONT, 32)
 font2 = ImageFont.truetype(Mister_Pixel_FONT, 14)
+degree_sign = u"\N{DEGREE SIGN}"
 
 currentTemp = str(avgTemp)+degree_sign+"F"
 w, h = font.getsize(currentTemp)
