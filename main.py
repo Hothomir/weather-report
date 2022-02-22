@@ -14,9 +14,12 @@ from pyowm.utils import timestamps
 
 CURR_DIR = os.path.dirname(os.path.realpath(__file__)) + "/"
 RESOURCES = CURR_DIR + "resources/"
+
+# Fonts
 PIXEL_FONT = RESOURCES + "fonts/Pixel12x10.ttf"
 Terminal_FONT = RESOURCES + "fonts/terminal-grotesque.ttf"
 Mister_Pixel_FONT = RESOURCES + "fonts/Mister_Pixel_Regular.otf"
+B_FONT = RESOURCES + "fonts/04B_03__.ttf"
 
 TimeDate = datetime.datetime.now()
 
@@ -35,9 +38,10 @@ img = Image.open("/home/pi/weather-report/resources/background/test.png")
 draw = ImageDraw.Draw(img)
 
 font = ImageFont.truetype(PIXEL_FONT, 18)
+font_big = ImageFont.truetype(B_FONT, 32)
 font2 = ImageFont.truetype(Mister_Pixel_FONT, 14)
 
-currentTemp = "Current REAL Temp: "+str(avgTemp)+"F"
+currentTemp = str(avgTemp)+degree_sign+"F"
 w, h = font.getsize(currentTemp)
 #x = (inky_display.WIDTH / 2) - (w / 2)
 #y = (inky_display.HEIGHT / 2) - (w / 2)
