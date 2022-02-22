@@ -49,7 +49,7 @@ w, h = font.getsize(currentTemp)
 #y = (inky_display.HEIGHT / 2) - (w / 2)
 
 draw.text((5, 3),TimeDate.strftime("%m-%d-%Y"), inky_display.WHITE, font=font2) 
-draw.text((335, 3),TimeDate.strftime("%H:%M"), inky_display.WHITE, font=font2)
+draw.text((375, 3),TimeDate.strftime("%H:%M"), inky_display.WHITE, font=font2)
 
 draw.text((20, 60), currentTemp, inky_display.BLACK, font_big)
 
