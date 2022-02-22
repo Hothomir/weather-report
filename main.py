@@ -19,7 +19,7 @@ RESOURCES = CURR_DIR + "resources/"
 PIXEL_FONT = RESOURCES + "fonts/Pixel12x10.ttf"
 Terminal_FONT = RESOURCES + "fonts/terminal-grotesque.ttf"
 Mister_Pixel_FONT = RESOURCES + "fonts/Mister_Pixel_Regular.otf"
-B_FONT = RESOURCES + "fonts/04B_03__.ttf"
+B_FONT = RESOURCES + "fonts/04B_03.ttf"
 
 TimeDate = datetime.datetime.now()
 
