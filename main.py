@@ -16,6 +16,8 @@ CURR_DIR = os.path.dirname(os.path.realpath(__file__)) + "/"
 RESOURCES = CURR_DIR + "resources/"
 PIXEL_FONT = RESOURCES + "fonts/Pixel12x10.ttf"
 Terminal_FONT = RESOURCES + "fonts/terminal-grotesque.ttf"
+Mister_Pixel_FONT = RESOURCES + "fonts/Mister_Pixel_Regular.otf"
+
 TimeDate = datetime.datetime.now()
 
 #OpenWeatherMap Integration
@@ -33,7 +35,7 @@ img = Image.open("/home/pi/weather-report/resources/background/test.png")
 draw = ImageDraw.Draw(img)
 
 font = ImageFont.truetype(PIXEL_FONT, 18)
-font2 = ImageFont.truetype(Terminal_FONT, 14)
+font2 = ImageFont.truetype(Mister_Pixel_FONT, 14)
 
 currentTemp = "Current REAL Temp: "+str(avgTemp)+"F"
 w, h = font.getsize(currentTemp)
@@ -41,7 +43,7 @@ w, h = font.getsize(currentTemp)
 #y = (inky_display.HEIGHT / 2) - (w / 2)
 
 draw.text((5, 3),TimeDate.strftime("%m-%d-%Y"), inky_display.WHITE, font=font2) 
-draw.text((350, 3),TimeDate.strftime("%H:%M"), inky_display.WHITE, font=font2)
+draw.text((355, 3),TimeDate.strftime("%H:%M"), inky_display.WHITE, font=font2)
 
 draw.text((20, 60), currentTemp, inky_display.YELLOW, font)
 
