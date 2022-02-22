@@ -1,4 +1,6 @@
-#TO DO: - API key from Weather Underground to get weather info. - Output current temperature of home location onto Inky wHAT.
+#TO DO: - API key from Weather Underground to get weather info.
+# - Output current temperature of home location onto Inky wHAT.
+# Sketch out how the weather info will look like!
 
 import os, sys
 import datetime
@@ -38,11 +40,10 @@ img = Image.open("/home/pi/weather-report/resources/background/test.png")
 draw = ImageDraw.Draw(img)
 
 font = ImageFont.truetype(PIXEL_FONT, 18)
-font_big = ImageFont.truetype(B_FONT, 32)
+font_big = ImageFont.truetype(B_FONT, 64)
 font2 = ImageFont.truetype(Mister_Pixel_FONT, 14)
-degree_sign = u"\N{DEGREE SIGN}"
 
-currentTemp = str(avgTemp)+degree_sign+"F"
+currentTemp = str(avgTemp)+"F"
 w, h = font.getsize(currentTemp)
 #x = (inky_display.WIDTH / 2) - (w / 2)
 #y = (inky_display.HEIGHT / 2) - (w / 2)
@@ -50,7 +51,7 @@ w, h = font.getsize(currentTemp)
 draw.text((5, 3),TimeDate.strftime("%m-%d-%Y"), inky_display.WHITE, font=font2) 
 draw.text((335, 3),TimeDate.strftime("%H:%M"), inky_display.WHITE, font=font2)
 
-draw.text((20, 60), currentTemp, inky_display.YELLOW, font_big)
+draw.text((20, 60), currentTemp, inky_display.BLACK, font_big)
 
 inky_display.set_image(img)
 inky_display.show()
