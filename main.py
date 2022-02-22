@@ -49,7 +49,7 @@ w, h = font.getsize(currentTemp)
 draw.text((5, 3),TimeDate.strftime("%m-%d-%Y"), inky_display.WHITE, font=font2) 
 draw.text((335, 3),TimeDate.strftime("%H:%M"), inky_display.WHITE, font=font2)
 
-draw.text((20, 60), currentTemp, inky_display.YELLOW, font)
+draw.text((20, 60), currentTemp, inky_display.YELLOW, font_big)
 
 inky_display.set_image(img)
 inky_display.show()
