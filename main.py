@@ -1,5 +1,5 @@
-#TO DO: - API key from Weather Underground to get weather info.
-# - Output current temperature of home location onto Inky wHAT.
+#TO DO:
+# - Weather icons for weather conditions
 # - Display location, humidity, wind, precipitation
 # - Future weather at bottom of display, showing 2 hour periods
 
@@ -32,6 +32,7 @@ degreeSign = u"\N{DEGREE SIGN}"
 owm = OWM("c7f275b2d16f8329784620d02222e9ee")
 mgr = owm.weather_manager()
 weather = mgr.weather_at_place("Turnersville,US").weather
+one_call = mgr.one_call(lat=39.7729, lon=75.0519)
 
 getTemp = weather.temperature("fahrenheit") #enables temp in fahrenheit
 curTemp = int(getTemp["temp"]) #get current temp
@@ -42,9 +43,10 @@ loTemp = int(getTemp["temp_min"])
 getWind = weather.wind(unit="miles_hour")
 curWind = int(getWind["speed"])
 
-one_call = mgr.one_call(lat=39.7729, lon=75.0519)
-
 one_call.current.humidity #get current humidity
+
+print(one_call.forecast_hourly[0].temperature("fahrenheit").get("temp", 0)) #temp 2 hours ahead ofcurrent time
+print(one_call.forecast_daily)
 
 inky_display = InkyWHAT("yellow")
 inky_display.set_border(inky_display.WHITE)
@@ -61,6 +63,8 @@ currentTemp = str(curTemp)+degreeSign
 
 currentHiTemp = "H: "+str(hiTemp)+degreeSign #current temp max
 currentLoTemp ="L: "+str(loTemp)+degreeSign #current temp min
+
+currentCond = str(weather.status)
 
 currentHumidity = "HUMIDITY: "+str(one_call.current.humidity)+"%"
 currentWind = "WIND: "+str(curWind)+"MPH"
@@ -79,8 +83,9 @@ draw.text((140, 130), currentHiTemp, inky_display.BLACK, font)
 draw.text((140, 140), currentLoTemp, inky_display.BLACK, font)
  
 draw.text((280, 100), currentHumidity, inky_display.BLACK, font_medium)
-draw.text((280,120), currentWind, inky_display.BLACK, font_medium)
+draw.text((280, 120), currentWind, inky_display.BLACK, font_medium)
 
+draw.text((5, 200), currentCond, inky_display.BLACK, font_medium)
 
 inky_display.set_image(img)
 inky_display.show()
