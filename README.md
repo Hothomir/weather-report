@@ -9,7 +9,7 @@ Current weather information
 - Highs and Lows
 - Weather conditions (rainy, sunny, etc.)
 - Humidity
-- Wind
+-Wind
 
 Hourly Weather Forecast (Every two hours, total of eight hours ahead)
 - Temperature
@@ -19,6 +19,7 @@ Hourly Weather Forecast (Every two hours, total of eight hours ahead)
 # Hardware Used
 - Raspberry Pi Zero W (Headers)
 - Inky wHAT Display [(Pimoroni Link)](https://shop.pimoroni.com/products/inky-what?variant=21441988558931)
+![weather-report-v1](https://user-images.githubusercontent.com/10063060/158103174-c091a3f5-3b8e-4444-bc4c-e6175d5da4e5.jpg)
 
 # Installation
 TBA
