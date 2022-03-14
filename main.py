@@ -76,7 +76,7 @@ SixHrCond = str(one_call.forecast_hourly[6].status)
 EightHrTemp = str(int(one_call.forecast_hourly[8].temperature("fahrenheit").get("temp", 0))) #get temp in 8 hrs
 EightHrCond = str(one_call.forecast_hourly[8].status)
 
-currentCond = str(weather.detailed_status)
+currentCond = str(weather.detailed_status).title()
 
 currentHumidity = "HUMIDITY: "+str(one_call.current.humidity)+"%"
 currentWind = "WIND: "+str(curWind)+"MPH"
