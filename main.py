@@ -81,29 +81,62 @@ currentCond = str(weather.detailed_status).title()
 currentHumidity = "HUMIDITY: "+str(one_call.current.humidity)+"%"
 currentWind = "WIND: "+str(curWind)+"MPH"
 
+#proper text placement
+projectName = "WEATHER REPORT"
+w_name, h_name = font2.getsize(projectName)
+x_name = 200 - (w_name/2)
+
+w_TwoHrTemp, h_TwoHrTemp = font_medium.getsize(TwoHrTemp)
+x_TwoHrTemp = (50) - (w_TwoHrTemp/2)
+w_TwoHrsTime, h_TwoHrsTime = font_tiny.getsize(TwoHrsTime)
+x_TwoHrsTime = 50 - (w_TwoHrsTime/2)
+w_TwoHrCond, h_TwoHrCond = font_tiny.getsize(TwoHrCond)
+x_TwoHrCond = 50 - (w_TwoHrCond/2)
+
+w_FourHrTemp, h_FourHrTemp = font_medium.getsize(FourHrTemp)
+x_FourHrTemp = (150) - (w_FourHrTemp/2)
+w_FourHrsTime, h_FourHrsTime = font_tiny.getsize(FourHrsTime)
+x_FourHrsTime = 150 - (w_FourHrsTime/2)
+w_FourHrCond, h_FourHrCond = font_tiny.getsize(FourHrCond)
+x_FourHrCond = 150 - (w_FourHrCond/2)
+
+w_SixHrTemp, h_SixHrTemp = font_medium.getsize(SixHrTemp)
+x_SixHrTemp = (250) - (w_SixHrTemp/2)
+w_SixHrsTime, h_SixHrsTime = font_tiny.getsize(SixHrsTime)
+x_SixHrsTime = 250 - (w_SixHrsTime/2)
+w_SixHrCond, h_SixHrCond = font_tiny.getsize(SixHrCond)
+x_SixHrCond = 250 - (w_SixHrCond/2)
+
+w_EightHrTemp, h_EightHrTemp = font_medium.getsize(EightHrTemp)
+x_EightHrTemp = (350) - (w_EightHrTemp/2)
+w_EightHrsTime, h_EightHrsTime = font_tiny.getsize(EightHrsTime)
+x_EightHrsTime = 350 - (w_EightHrsTime/2)
+w_EightHrCond, h_EightHrCond = font_tiny.getsize(EightHrCond)
+x_EightHrCond = 350 - (w_EightHrCond/2)
+
 #draw data and text onto display
 draw.text((5, 4),TimeDate.strftime("%m-%d-%Y"), inky_display.WHITE, font2)	#Time
 draw.text((368, 4),TimeDate.strftime("%H:%M"), inky_display.WHITE, font2)	#Date
-draw.text((155, 4),"WEATHER REPORT", inky_display.WHITE, font2)			#project name
+draw.text((x_name, 4),"WEATHER REPORT", inky_display.WHITE, font2)			#project name
 
 draw.text((150, 60), currentTemp, inky_display.BLACK, font_big)			#Current temp
 draw.text((155, 140), currentHiTemp, inky_display.BLACK, font)			#Current high temp
 draw.text((155, 155), currentLoTemp, inky_display.BLACK, font)			#Current low temp
 
-draw.text((15, 245), TwoHrTemp+degreeSign, inky_display.BLACK, font_medium)	#Temp in 2 hrs
-draw.text((120, 245),FourHrTemp+degreeSign, inky_display.BLACK, font_medium)	#Temp in 4 hrs
-draw.text((230, 245), SixHrTemp+degreeSign, inky_display.BLACK, font_medium)	#Temp in 6 hrs
-draw.text((330, 245), EightHrTemp+degreeSign, inky_display.BLACK, font_medium)	#Temp in 8 hrs
+draw.text((x_TwoHrTemp, 245), TwoHrTemp+degreeSign, inky_display.BLACK, font_medium)	#Temp in 2 hrs
+draw.text((x_FourHrTemp, 245),FourHrTemp+degreeSign, inky_display.BLACK, font_medium)	#Temp in 4 hrs
+draw.text((x_SixHrTemp, 245), SixHrTemp+degreeSign, inky_display.BLACK, font_medium)	#Temp in 6 hrs
+draw.text((x_EightHrTemp, 245), EightHrTemp+degreeSign, inky_display.BLACK, font_medium)	#Temp in 8 hrs
 
-draw.text((16, 280), TwoHrCond, inky_display.BLACK, font_tiny)			#Condition in 2 hrs
-draw.text((126, 280), FourHrCond, inky_display.BLACK, font_tiny)		#Condition in 4 hrs
-draw.text((236, 280), SixHrCond, inky_display.BLACK, font_tiny)			#Condition in 6 hrs
-draw.text((336, 280), EightHrCond, inky_display.BLACK, font_tiny)		#Condition in 8 hrs
+draw.text((x_TwoHrCond, 280), TwoHrCond, inky_display.BLACK, font_tiny)			#Condition in 2 hrs
+draw.text((x_FourHrCond, 280), FourHrCond, inky_display.BLACK, font_tiny)		#Condition in 4 hrs
+draw.text((x_SixHrCond, 280), SixHrCond, inky_display.BLACK, font_tiny)			#Condition in 6 hrs
+draw.text((x_EightHrCond, 280), EightHrCond, inky_display.BLACK, font_tiny)		#Condition in 8 hrs
 
-draw.text((16, 236), TwoHrsTime, inky_display.BLACK, font_tiny)			#Time in 2 hrs
-draw.text((126, 236), FourHrsTime, inky_display.BLACK, font_tiny)		#Time in 4 hrs
-draw.text((236, 236), SixHrsTime, inky_display.BLACK, font_tiny)		#Time in 6 hrs
-draw.text((336, 236), EightHrsTime, inky_display.BLACK, font_tiny)		#Time in 8 hrs
+draw.text((x_TwoHrsTime, 236), TwoHrsTime, inky_display.BLACK, font_tiny)			#Time in 2 hrs
+draw.text((x_FourHrsTime, 236), FourHrsTime, inky_display.BLACK, font_tiny)		#Time in 4 hrs
+draw.text((x_SixHrsTime, 236), SixHrsTime, inky_display.BLACK, font_tiny)		#Time in 6 hrs
+draw.text((x_EightHrsTime, 236), EightHrsTime, inky_display.BLACK, font_tiny)		#Time in 8 hrs
 
 draw.text((280, 100), currentHumidity, inky_display.BLACK, font_small)		#Current humidity in percentage
 draw.text((280, 120), currentWind, inky_display.BLACK, font_small)		#Current wind speed in MPH
