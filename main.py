@@ -68,9 +68,13 @@ currentHiTemp = "H: "+str(hiTemp)+degreeSign #current temp max
 currentLoTemp ="L: "+str(loTemp)+degreeSign #current temp min
 
 TwoHrTemp = str(int(one_call.forecast_hourly[2].temperature("fahrenheit").get("temp", 0))) #get temp in 2 hrs
+TwoHrCond = str(one_call.forecast_hourly[2].status)
 FourHrTemp = str(int(one_call.forecast_hourly[4].temperature("fahrenheit").get("temp", 0))) #get temp in 4 hrs
+FourHrCond = str(one_call.forecast_hourly[4].status)
 SixHrTemp = str(int(one_call.forecast_hourly[6].temperature("fahrenheit").get("temp", 0))) #get temp in 6 hrs
+SixHrCond = str(one_call.forecast_hourly[6].status)
 EightHrTemp = str(int(one_call.forecast_hourly[8].temperature("fahrenheit").get("temp", 0))) #get temp in 8 hrs
+EightHrCond = str(one_call.forecast_hourly[8].status)
 
 currentCond = str(weather.detailed_status)
 
@@ -82,19 +86,24 @@ draw.text((5, 4),TimeDate.strftime("%m-%d-%Y"), inky_display.WHITE, font2)	#Time
 draw.text((368, 4),TimeDate.strftime("%H:%M"), inky_display.WHITE, font2)	#Date
 draw.text((155, 4),"WEATHER REPORT", inky_display.WHITE, font2)			#project name
 
-draw.text((140, 60), currentTemp, inky_display.BLACK, font_big)
-draw.text((140, 130), currentHiTemp, inky_display.BLACK, font)
-draw.text((140, 140), currentLoTemp, inky_display.BLACK, font)
+draw.text((150, 60), currentTemp, inky_display.BLACK, font_big)			#Current temp
+draw.text((155, 140), currentHiTemp, inky_display.BLACK, font)			#Current high temp
+draw.text((155, 155), currentLoTemp, inky_display.BLACK, font)			#Current low temp
 
 draw.text((15, 245), TwoHrTemp+degreeSign, inky_display.BLACK, font_medium)	#Temp in 2 hrs
 draw.text((120, 245),FourHrTemp+degreeSign, inky_display.BLACK, font_medium)	#Temp in 4 hrs
 draw.text((230, 245), SixHrTemp+degreeSign, inky_display.BLACK, font_medium)	#Temp in 6 hrs
 draw.text((330, 245), EightHrTemp+degreeSign, inky_display.BLACK, font_medium)	#Temp in 8 hrs
 
-draw.text((16, 280), TwoHrsTime, inky_display.BLACK, font_tiny)			#Time in 2 hrs
-draw.text((126, 280), FourHrsTime, inky_display.BLACK, font_tiny)		#Time in 4 hrs
-draw.text((236, 280), SixHrsTime, inky_display.BLACK, font_tiny)		#Time in 6 hrs
-draw.text((336, 280), EightHrsTime, inky_display.BLACK, font_tiny)		#Time in 8 hrs
+draw.text((16, 280), TwoHrCond, inky_display.BLACK, font_tiny)			#Condition in 2 hrs
+draw.text((126, 280), FourHrCond, inky_display.BLACK, font_tiny)		#Condition in 4 hrs
+draw.text((236, 280), SixHrCond, inky_display.BLACK, font_tiny)			#Condition in 6 hrs
+draw.text((336, 280), EightHrCond, inky_display.BLACK, font_tiny)		#Condition in 8 hrs
+
+draw.text((16, 236), TwoHrsTime, inky_display.BLACK, font_tiny)			#Time in 2 hrs
+draw.text((126, 236), FourHrsTime, inky_display.BLACK, font_tiny)		#Time in 4 hrs
+draw.text((236, 236), SixHrsTime, inky_display.BLACK, font_tiny)		#Time in 6 hrs
+draw.text((336, 236), EightHrsTime, inky_display.BLACK, font_tiny)		#Time in 8 hrs
 
 draw.text((280, 100), currentHumidity, inky_display.BLACK, font_small)		#Current humidity in percentage
 draw.text((280, 120), currentWind, inky_display.BLACK, font_small)		#Current wind speed in MPH
