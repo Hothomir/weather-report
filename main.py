@@ -23,6 +23,9 @@ Terminal_FONT = RESOURCES + "fonts/terminal-grotesque.ttf"
 Mister_Pixel_FONT = RESOURCES + "fonts/Mister_Pixel_Regular.otf"
 B_FONT = RESOURCES + "fonts/04B_03.ttf"
 VG5000_FONT = RESOURCES + "fonts/VG5000-Regular.otf"
+FT88Reg_FONT = RESOURCES + "fonts/FT88-Regular.otf"
+FT88Exp_FONT = RESOURCES + "fonts/FT88-Expanded.otf"
+FT88Bld_FONT = RESOURCES + "fonts/FT88-Bold.otf"
 
 TimeDate = datetime.now()
 TwoHrsTime = (datetime.now()+timedelta(hours=2)).strftime("%H:00")
@@ -55,12 +58,13 @@ inky_display.set_border(inky_display.WHITE)
 img = Image.open("/home/pi/weather-report/resources/background/weather-report-bg.png")
 draw = ImageDraw.Draw(img)
 
-font = ImageFont.truetype(PIXEL_FONT, 12)
-font_tiny = ImageFont.truetype(VG5000_FONT, 12)
-font_small = ImageFont.truetype(VG5000_FONT, 17)
+font = ImageFont.truetype(FT88Bld_FONT, 12)
+font_tiny = ImageFont.truetype(FT88Reg_FONT, 12)
+font_small = ImageFont.truetype(VG5000_FONT, 19)
 font_medium = ImageFont.truetype(VG5000_FONT, 32)
 font_big = ImageFont.truetype(VG5000_FONT, 64)
 font2 = ImageFont.truetype(VG5000_FONT, 10)
+font_extended = ImageFont.truetype(FT88Exp_FONT, 11)
 
 currentTemp = str(curTemp)+degreeSign
 
@@ -83,7 +87,7 @@ currentWind = "WIND: "+str(curWind)+"MPH"
 
 #proper text placement
 projectName = "WEATHER REPORT"
-w_name, h_name = font2.getsize(projectName)
+w_name, h_name = font_extended.getsize(projectName)
 x_name = 200 - (w_name/2)
 
 w_TwoHrTemp, h_TwoHrTemp = font_medium.getsize(TwoHrTemp)
@@ -117,11 +121,11 @@ x_EightHrCond = 350 - (w_EightHrCond/2)
 #draw data and text onto display
 draw.text((5, 4),TimeDate.strftime("%m-%d-%Y"), inky_display.WHITE, font2)	#Time
 draw.text((368, 4),TimeDate.strftime("%H:%M"), inky_display.WHITE, font2)	#Date
-draw.text((x_name, 4),"WEATHER REPORT", inky_display.WHITE, font2)			#project name
+draw.text((x_name, 5),"WEATHER REPORT", inky_display.WHITE, font_extended)	#project name
 
-draw.text((150, 60), currentTemp, inky_display.BLACK, font_big)			#Current temp
-draw.text((155, 140), currentHiTemp, inky_display.BLACK, font)			#Current high temp
-draw.text((155, 155), currentLoTemp, inky_display.BLACK, font)			#Current low temp
+draw.text((150, 60), currentTemp, inky_display.BLACK, font_big)				#Current temp
+draw.text((155, 140), currentHiTemp, inky_display.BLACK, font_tiny)			#Current high temp
+draw.text((155, 155), currentLoTemp, inky_display.BLACK, font_tiny)			#Current low temp
 
 draw.text((x_TwoHrTemp, 248), TwoHrTemp+degreeSign, inky_display.BLACK, font_medium)	#Temp in 2 hrs
 draw.text((x_FourHrTemp, 248),FourHrTemp+degreeSign, inky_display.BLACK, font_medium)	#Temp in 4 hrs
