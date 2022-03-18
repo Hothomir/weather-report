@@ -60,7 +60,7 @@ draw = ImageDraw.Draw(img)
 
 font = ImageFont.truetype(FT88Bld_FONT, 12)
 font_tiny = ImageFont.truetype(FT88Reg_FONT, 12)
-font_small = ImageFont.truetype(VG5000_FONT, 19)
+font_small = ImageFont.truetype(VG5000_FONT, 16)
 font_medium = ImageFont.truetype(VG5000_FONT, 32)
 font_big = ImageFont.truetype(VG5000_FONT, 64)
 font2 = ImageFont.truetype(VG5000_FONT, 10)
@@ -124,13 +124,13 @@ draw.text((368, 4),TimeDate.strftime("%H:%M"), inky_display.WHITE, font2)	#Date
 draw.text((x_name, 5),"WEATHER REPORT", inky_display.WHITE, font_extended)	#project name
 
 draw.text((150, 60), currentTemp, inky_display.BLACK, font_big)				#Current temp
-draw.text((155, 140), currentHiTemp, inky_display.BLACK, font_tiny)			#Current high temp
-draw.text((155, 155), currentLoTemp, inky_display.BLACK, font_tiny)			#Current low temp
+draw.text((155, 130), currentHiTemp, inky_display.BLACK, font_tiny)			#Current high temp
+draw.text((155, 145), currentLoTemp, inky_display.BLACK, font_tiny)			#Current low temp
 
-draw.text((x_TwoHrTemp, 248), TwoHrTemp+degreeSign, inky_display.BLACK, font_medium)	#Temp in 2 hrs
-draw.text((x_FourHrTemp, 248),FourHrTemp+degreeSign, inky_display.BLACK, font_medium)	#Temp in 4 hrs
-draw.text((x_SixHrTemp, 248), SixHrTemp+degreeSign, inky_display.BLACK, font_medium)	#Temp in 6 hrs
-draw.text((x_EightHrTemp, 248), EightHrTemp+degreeSign, inky_display.BLACK, font_medium)	#Temp in 8 hrs
+draw.text((x_TwoHrTemp, 246), TwoHrTemp+degreeSign, inky_display.BLACK, font_medium)	#Temp in 2 hrs
+draw.text((x_FourHrTemp, 246),FourHrTemp+degreeSign, inky_display.BLACK, font_medium)	#Temp in 4 hrs
+draw.text((x_SixHrTemp, 246), SixHrTemp+degreeSign, inky_display.BLACK, font_medium)	#Temp in 6 hrs
+draw.text((x_EightHrTemp, 246), EightHrTemp+degreeSign, inky_display.BLACK, font_medium)	#Temp in 8 hrs
 
 draw.text((x_TwoHrCond, 283), TwoHrCond, inky_display.BLACK, font_tiny)			#Condition in 2 hrs
 draw.text((x_FourHrCond, 283), FourHrCond, inky_display.BLACK, font_tiny)		#Condition in 4 hrs
