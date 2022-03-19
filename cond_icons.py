@@ -8,6 +8,9 @@
 import os, sys
 from datetime import datetime
 
+from PIL import Image, ImageFont, ImageDraw
+
+#pyOWM Libraries
 from pyowm.owm import OWM
 from pyowm.utils import config
 from pyowm.utils import timestamps
@@ -21,10 +24,31 @@ mgr = owm.weather_manager()
 weather = mgr.weather_at_place("Turnersville,US").weather
 one_call = mgr.one_call(lat=39.7729, lon=-75.0519)
 
+#icon directory
+Clouds_ICON = Resources + "icons/few_clouds.png"
+Sun_ICON = Resources + "icons/sun.png"
+Rain_ICON = Resources + "icons/rain.png"
+Drizzle_ICON = Resources + "icons/light_rain.png"
+
 currentCond = str(weather.status).title()
 
 # When current Condition is given:
 # output icon graphic based on condition
+def getCondIcon():
+	if currentCond == "Clear":
+		IconOutput = Image.open(Clouds_ICON)
+
+	if currentCond == "Drizzle":
+		IconOutput = Image.open(Drizzle_ICON)
+
+	if currentCond == "Rain":
+		IconOutput = Image.open(Rain_ICON)
+
+#THUNDER
+
+#SNOW
+
+#MIST/FOG
 
 # else:
 # print "N/A"
