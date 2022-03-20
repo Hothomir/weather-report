@@ -1,10 +1,6 @@
 # Python file for icon library
 # To Do:
-	# - Create Icons from this list of conditions:
-	# - clear sky, few clouds, scattered clouds, broken clouds, shower rain, rain, thunderstorm, snow, mist
-
-	# - Call icons based on what the current condition is.
-	# - Have main.py file call cond_icons.py file to draw current condition icon on display.
+	# - Show moon/sun specific icons for specific times (moon from 19:00-07:00)
 import os, sys
 from datetime import datetime
 
@@ -18,15 +14,30 @@ from pyowm.utils import timestamps
 CurrDir = os.path.dirname(os.path.realpath(__file__)) + "/"
 Resources = CurrDir + "resources/"
 
+now = datetime.now()
+CurrTime = now.strftime("%H:%M")
+
 #OpenWeatherMap Integration
 owm = OWM("c7f275b2d16f8329784620d02222e9ee")
 mgr = owm.weather_manager()
 weather = mgr.weather_at_place("Turnersville,US").weather
 one_call = mgr.one_call(lat=39.7729, lon=-75.0519)
 
+CurrCond = str(weather.status).title()
+CurrCondDetail = str(weather.status).title()
+
 #icon directory
-FewClouds_ICON = Resources + "icons/few_clouds.png"
-FewCloudsIconOutput = Image.open(FewClouds_ICON)
+ClearSun_ICON = Resources +"icons/sun.png"
+ClearSunIconOutput = Image.open(ClearSun_ICON)
+
+ClearMoon_ICON = Resources +"icons/moon.png"
+ClearMoonIconOutput = Image.open(ClearMoon_ICON)
+
+FewCloudsSun_ICON = Resources + "icons/few_clouds_sun.png"
+FewCloudsSunIconOutput = Image.open(FewCloudsSun_ICON)
+
+FewCloudsMoon_ICON = Resources + "icons/few_clouds_moon.png"
+FewCloudsMoonIconOutput = Image.open(FewCloudsMoon_ICON)
 
 Clouds_ICON = Resources + "icons/clouds.png"
 CloudsIconOutput = Image.open(Clouds_ICON)
@@ -49,36 +60,33 @@ ThunderstormIconOutput = Image.open(Thunderstorm_ICON)
 Snow_ICON = Resources + "icons/snow.png"
 SnowIconOutput = Image.open(Snow_ICON)
 
-CurrCond = str(weather.status).title()
-print(CurrCond)
-CurrCondDetail = str(weather.status).title()
+Fog_ICON = Resources + "icons/fog.png"
+FogIconOutput = Image.open(Fog_ICON)
 
-# When current Condition is given:
-# output icon graphic based on condition
 def CurrCondIcon():
 	if CurrCond == "Clear":
-		return SunIconOutput
+		if   CurrTime > "19:00" and CurrTime < "07:00":
+			return ClearMoonIconOutput
+		else:
+			return ClearSunIconOutput
 
 	elif CurrCond == "Clouds":
-			if CurrCondDetail == "Few Clouds":
-				return FewCloudsIconOutput
-			else:
-				return CloudsIconOutput
+		if CurrCondDetail == "Few Clouds":
+			return FewCloudsSunIconOutput
+		else:
+			return CloudsIconOutput
 
 	elif CurrCond == "Rain":
 		return RainIconOutput
 
 	elif CurrCond == "Thunderstorm":
-			if CurrCondDetail == "Thunderstorm" or "Heavy Thunderstorm" or "Ragged Thunderstorm":
-				return ThunderIconOutput
-			else:
-				return ThunderstormIconOutput
+		if CurrCondDetail == "Thunderstorm" or "Heavy Thunderstorm" or "Ragged Thunderstorm":
+			return ThunderIconOutput
+		else:
+			return ThunderstormIconOutput
 
 	elif CurrCond == "Snow":
 		return SnowIconOutput 
-#SNOW
 
-#MIST/FOG
-
-# else:
-# print "N/A"
+	elif CurrCond == "Mist" or "Smoke" or "Haze" or "Dust" or "Fog" or "Sand" or "Dust" or "Ash" or "Squall" or "Tornado":
+		return FogIconOutput

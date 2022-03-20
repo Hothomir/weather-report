@@ -66,6 +66,7 @@ font_medium = ImageFont.truetype(VG5000_FONT, 32)
 font_big = ImageFont.truetype(VG5000_FONT, 64)
 font2 = ImageFont.truetype(VG5000_FONT, 10)
 font_extended = ImageFont.truetype(FT88Exp_FONT, 11)
+font_cond_detail = ImageFont.truetype(VG5000_FONT, 20)
 
 currentTemp = str(curTemp)+degreeSign
 
@@ -82,15 +83,12 @@ EightHrTemp = str(int(one_call.forecast_hourly[8].temperature("fahrenheit").get(
 EightHrCond = str(one_call.forecast_hourly[8].status)
 
 currentCond = str(weather.detailed_status).title()
-print(currentCond)
-
-
 currentHumidity = "HUMIDITY: "+str(one_call.current.humidity)+"%"
 currentWind = "WIND: "+str(curWind)+"MPH"
 
 #proper text placement
 projectName = "WEATHER REPORT"
-w_name, h_name = font_extended.getsize(projectName)
+w_name, h_name = font2.getsize(projectName)
 x_name = 200 - (w_name/2)
 
 w_TwoHrTemp, h_TwoHrTemp = font_medium.getsize(TwoHrTemp)
@@ -123,14 +121,13 @@ x_EightHrCond = 350 - (w_EightHrCond/2)
 
 #draw data and text onto display
 
-img.paste(cond_icons.CurrCondIcon(), (15, 65))			#ICON TEST FOR COLOR
 draw.text((5, 4),TimeDate.strftime("%m-%d-%Y"), inky_display.WHITE, font2)	#Time
 draw.text((368, 4),TimeDate.strftime("%H:%M"), inky_display.WHITE, font2)	#Date
-draw.text((x_name, 5),"WEATHER REPORT", inky_display.WHITE, font_extended)	#project name
+draw.text((x_name, 4),projectName, inky_display.WHITE, font2)			#project name
 
 draw.text((150, 60), currentTemp, inky_display.BLACK, font_big)				#Current temp
-draw.text((155, 130), currentHiTemp, inky_display.BLACK, font_tiny)			#Current high temp
-draw.text((155, 145), currentLoTemp, inky_display.BLACK, font_tiny)			#Current low temp
+draw.text((155, 135), currentHiTemp, inky_display.BLACK, font_tiny)			#Current high temp
+draw.text((155, 149), currentLoTemp, inky_display.BLACK, font_tiny)			#Current low temp
 
 draw.text((x_TwoHrTemp, 246), TwoHrTemp+degreeSign, inky_display.BLACK, font_medium)	#Temp in 2 hrs
 draw.text((x_FourHrTemp, 246),FourHrTemp+degreeSign, inky_display.BLACK, font_medium)	#Temp in 4 hrs
@@ -147,10 +144,11 @@ draw.text((x_FourHrsTime, 239), FourHrsTime, inky_display.BLACK, font_tiny)		#Ti
 draw.text((x_SixHrsTime, 239), SixHrsTime, inky_display.BLACK, font_tiny)		#Time in 6 hrs
 draw.text((x_EightHrsTime, 239), EightHrsTime, inky_display.BLACK, font_tiny)		#Time in 8 hrs
 
-draw.text((280, 100), currentHumidity, inky_display.BLACK, font_small)		#Current humidity in percentage
+draw.text((280, 100), currentHumidity, inky_display.BLACK, font_small)			#Current humidity in percentage
 draw.text((280, 120), currentWind, inky_display.BLACK, font_small)		#Current wind speed in MPH
 
-draw.text((5, 200), currentCond, inky_display.BLACK, font_small)		#Current weather conditions, short
+draw.text((10, 180), currentCond, inky_display.BLACK, font_cond_detail)		#Current weather conditions, short
+img.paste(cond_icons.CurrCondIcon(), (15, 65))                                  #Current Weather Icon
 
 inky_display.set_image(img)
 inky_display.show()
