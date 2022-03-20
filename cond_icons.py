@@ -70,11 +70,11 @@ def CurrCondIcon():
 		else:
 			return ClearSunIconOutput
 
-	elif CurrCond == "Clouds":
-		if CurrCondDetail == "Few Clouds":
-			return FewCloudsSunIconOutput
-		else:
-			return CloudsIconOutput
+	elif CurrCondDetail == "Scattered Clouds" or "Broken Clouds" or "Overcast Clouds":
+		return CloudsIconOutput
+
+	elif CurrCondDetail == "Few Clouds":
+		return FewCloudsSunIconOutput
 
 	elif CurrCond == "Rain":
 		return RainIconOutput
