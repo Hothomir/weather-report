@@ -10,7 +10,7 @@ Current weather information
 - Weather conditions (rainy, sunny, etc.)
 - Humidity
 - Wind
-- Icon depicting weather conditions (TBA)
+- Icon depicting weather conditions
 
 Hourly Weather Forecast (Every two hours, total of eight hours ahead)
 - Temperature
