@@ -27,10 +27,6 @@ VG5000_FONT = RESOURCES + "fonts/VG5000-Regular.otf"
 FT88Reg_FONT = RESOURCES + "fonts/FT88-Regular.otf"
 FT88Exp_FONT = RESOURCES + "fonts/FT88-Expanded.otf"
 FT88Bld_FONT = RESOURCES + "fonts/FT88-Bold.otf"
-
-#icon TEST
-#Clouds_ICON = RESOURCES + "icons/few_clouds.png"
-#sunIcon = Image.open(Clouds_ICON)
  
 TimeDate = datetime.now()
 TwoHrsTime = (datetime.now()+timedelta(hours=2)).strftime("%H:00")
@@ -86,6 +82,8 @@ EightHrTemp = str(int(one_call.forecast_hourly[8].temperature("fahrenheit").get(
 EightHrCond = str(one_call.forecast_hourly[8].status)
 
 currentCond = str(weather.detailed_status).title()
+print(currentCond)
+
 
 currentHumidity = "HUMIDITY: "+str(one_call.current.humidity)+"%"
 currentWind = "WIND: "+str(curWind)+"MPH"
@@ -125,7 +123,7 @@ x_EightHrCond = 350 - (w_EightHrCond/2)
 
 #draw data and text onto display
 
-img.paste(CurrentCondIcon(), (15, 65))			#ICON TEST FOR COLOR
+img.paste(cond_icons.CurrCondIcon(), (15, 65))			#ICON TEST FOR COLOR
 draw.text((5, 4),TimeDate.strftime("%m-%d-%Y"), inky_display.WHITE, font2)	#Time
 draw.text((368, 4),TimeDate.strftime("%H:%M"), inky_display.WHITE, font2)	#Date
 draw.text((x_name, 5),"WEATHER REPORT", inky_display.WHITE, font_extended)	#project name

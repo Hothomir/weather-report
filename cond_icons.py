@@ -25,27 +25,57 @@ weather = mgr.weather_at_place("Turnersville,US").weather
 one_call = mgr.one_call(lat=39.7729, lon=-75.0519)
 
 #icon directory
-Clouds_ICON = Resources + "icons/few_clouds.png"
-Sun_ICON = Resources + "icons/sun.png"
-Rain_ICON = Resources + "icons/rain.png"
-Drizzle_ICON = Resources + "icons/light_rain.png"
+FewClouds_ICON = Resources + "icons/few_clouds.png"
+FewCloudsIconOutput = Image.open(FewClouds_ICON)
 
-currentCond = str(weather.status).title()
+Clouds_ICON = Resources + "icons/clouds.png"
+CloudsIconOutput = Image.open(Clouds_ICON)
+
+Sun_ICON = Resources + "icons/sun.png"
+SunIconOutput = Image.open(Sun_ICON)
+
+Rain_ICON = Resources + "icons/rain.png"
+RainIconOutput = Image.open(Rain_ICON)
+
+Drizzle_ICON = Resources + "icons/light_rain.png"
+DrizzleIconOutput = Image.open(Drizzle_ICON)
+
+Thunder_ICON = Resources + "icons/thunder.png"
+ThunderIconOutput = Image.open(Thunder_ICON)
+
+Thunderstorm_ICON = Resources + "icons/thunderstorm.png"
+ThunderstormIconOutput = Image.open(Thunderstorm_ICON)
+
+Snow_ICON = Resources + "icons/snow.png"
+SnowIconOutput = Image.open(Snow_ICON)
+
+CurrCond = str(weather.status).title()
+print(CurrCond)
+CurrCondDetail = str(weather.status).title()
 
 # When current Condition is given:
 # output icon graphic based on condition
-def getCondIcon():
-	if currentCond == "Clear":
-		IconOutput = Image.open(Clouds_ICON)
+def CurrCondIcon():
+	if CurrCond == "Clear":
+		return SunIconOutput
 
-	if currentCond == "Drizzle":
-		IconOutput = Image.open(Drizzle_ICON)
+	elif CurrCond == "Clouds":
+			if CurrCondDetail == "Few Clouds":
+				return FewCloudsIconOutput
+			else:
+				return CloudsIconOutput
 
-	if currentCond == "Rain":
-		IconOutput = Image.open(Rain_ICON)
+	elif CurrCond == "Rain":
+		return RainIconOutput
 
-#THUNDER
+	elif CurrCond == "Thunderstorm":
+			if CurrCondDetail == "Thunderstorm" or "Heavy Thunderstorm" or "Ragged Thunderstorm":
+				return ThunderIconOutput
+			else:
+				return ThunderstormIconOutput
 
+	elif CurrCond == "Snow":
+		return SnowIconOutput 
 #SNOW
 
 #MIST/FOG
