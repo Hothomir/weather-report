@@ -25,8 +25,6 @@ Mister_Pixel_FONT = RESOURCES + "fonts/Mister_Pixel_Regular.otf"
 B_FONT = RESOURCES + "fonts/04B_03.ttf"
 VG5000_FONT = RESOURCES + "fonts/VG5000-Regular.otf"
 FT88Reg_FONT = RESOURCES + "fonts/FT88-Regular.otf"
-FT88Exp_FONT = RESOURCES + "fonts/FT88-Expanded.otf"
-FT88Bld_FONT = RESOURCES + "fonts/FT88-Bold.otf"
  
 TimeDate = datetime.now()
 TwoHrsTime = (datetime.now()+timedelta(hours=2)).strftime("%H:00")
@@ -59,13 +57,11 @@ inky_display.set_border(inky_display.WHITE)
 img = Image.open("/home/pi/weather-report/resources/background/weather-report-bg.png")
 draw = ImageDraw.Draw(img)
 
-font = ImageFont.truetype(FT88Bld_FONT, 12)
 font_tiny = ImageFont.truetype(FT88Reg_FONT, 12)
 font_small = ImageFont.truetype(VG5000_FONT, 16)
 font_medium = ImageFont.truetype(VG5000_FONT, 32)
 font_big = ImageFont.truetype(VG5000_FONT, 64)
 font2 = ImageFont.truetype(VG5000_FONT, 10)
-font_extended = ImageFont.truetype(FT88Exp_FONT, 11)
 font_cond_detail = ImageFont.truetype(VG5000_FONT, 20)
 
 currentTemp = str(curTemp)+degreeSign
