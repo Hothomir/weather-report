@@ -20,8 +20,9 @@ Hourly Weather Forecast (Every two hours, total of eight hours ahead)
 # Hardware Used
 - Raspberry Pi Zero W (Headers)
 - Inky wHAT Display [(Pimoroni Link)](https://shop.pimoroni.com/products/inky-what?variant=21441988558931)
-![weather-report-v1](https://user-images.githubusercontent.com/10063060/158103174-c091a3f5-3b8e-4444-bc4c-e6175d5da4e5.jpg)
 - Micro SD Card (min. 8GB)
+
+![PXL_20220321_125707503](https://user-images.githubusercontent.com/10063060/159292479-1cd7e692-8db8-45ff-85c0-00bccddefe3d.jpg)
 
 # Installation
 1. Install libraries for Inky wHAT display:
@@ -36,7 +37,52 @@ pip install pyowm
 ```
 git clone https://github.com/Hothomir/weather-report.git
 ```
+4. Access main.py using nano
+```
+nano main.py
+```
+5. Change the latitude and longitude values to desired location
+```
+lat = 39.952583
+lon = -75.165222
+```
+6. Input the city name on the weather variable (This is used for the OneCall API from OWM)
+```
+weather = mgr.weather_at_place("Philadelphia,US").weather
+```
+7. Run the program while in the weather-report directory
+```
+python main.py
+```
+8. Set the Location title (hackey way at the moment, but will be improved!)
+```
+currentLoc = ": Philadelphia, PA"
+```
+# Recurring Display Refreshes
+To get new weather information in timed intervals, I've used crontab. Crontab schedules when to run the main.py file and is flexible with how often it should be run.
+
+I've set up the crontab job to run every 30 minutes, so the display will refresh every 30 minutes. Example:
+1. Open crontab in terminal
+```
+crontab -e
+```
+2. At the bottom of the crontab file, provide the following line:
+```
+*/30 * * * * python /home/pi/weather-report/main.py
+```
+3. To refresh the display every 60 mins (every hour):
+```
+*/60 * * * * python /home/pi/weather-report/main.py
+```
 
 # To-Do
 - The location printed is just a string, would be nice if the lat and lon coordinates grabbed a location to print there instead.
 - Where the weather condition prints "Clear" in the image, it would be better to print the detailed condition for the current weather. However, need to see how to wrap text, as the detailed conditions print as one line and get cut off by the edge of the display.
+
+# Resources
+
+pyOWM
+https://pyowm.readthedocs.io/en/latest/#
+
+Pimoroni Inky
+https://github.com/pimoroni/inky
