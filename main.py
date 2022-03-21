@@ -37,9 +37,9 @@ degreeSign = u"\N{DEGREE SIGN}"
 #OpenWeatherMap Integration
 owm = OWM("c7f275b2d16f8329784620d02222e9ee")
 mgr = owm.weather_manager()
-weather = mgr.weather_at_place("Turnersville,US").weather
-lat = 39.7729
-lon = -75.0519
+weather = mgr.weather_at_place("ENTER TOWN/CITY HERE").weather
+lat = "PROVIDE COORDINATES" 
+lon = "PROVIDE COORDINATES"
 one_call = mgr.one_call(lat, lon)
 
 getTemp = weather.temperature("fahrenheit") #enables temp in fahrenheit
@@ -88,7 +88,7 @@ currentDetailCond = str(weather.detailed_status).title()
 
 currentHumidity = "Hum:"+str(one_call.current.humidity)+"%"
 currentWind = "Wind:"+str(curWind)+" MPH"
-currentLoc = ": City, USA"
+currentLoc = ": ENTER TOWN/CITY HERE"
 
 #proper text placement
 projectName = "WEATHER REPORT"
