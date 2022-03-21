@@ -21,6 +21,11 @@ Hourly Weather Forecast (Every two hours, total of eight hours ahead)
 - Raspberry Pi Zero W (Headers)
 - Inky wHAT Display [(Pimoroni Link)](https://shop.pimoroni.com/products/inky-what?variant=21441988558931)
 ![weather-report-v1](https://user-images.githubusercontent.com/10063060/158103174-c091a3f5-3b8e-4444-bc4c-e6175d5da4e5.jpg)
+- Micro SD Card (min. 8GB)
 
 # Installation
-TBA
+1. 
+
+# To-Do
+- The location printed is just a string, would be nice if the lat and lon coordinates grabbed a location to print there instead.
+- Where the weather condition prints "Clear" in the image, it would be better to print the detailed condition for the current weather. However, need to see how to wrap text, as the detailed conditions print as one line and get cut off by the edge of the display.
