@@ -42,12 +42,6 @@ lat = 39.7729
 lon = -75.0519
 one_call = mgr.one_call(lat, lon)
 
-reg = owm.city_id_registry()
-list_of_locations = reg.locations_for('Turnersville', country='US', matching='exact')
-turnersville = list_of_locations[0]
-lat = turnersville.lat
-lon = turnersville.lon
-
 getTemp = weather.temperature("fahrenheit") #enables temp in fahrenheit
 curTemp = int(getTemp["temp"]) #get current temp
 
@@ -92,8 +86,8 @@ EightHrCond = str(one_call.forecast_hourly[8].status)
 currentCond = str(weather.status)
 currentDetailCond = str(weather.detailed_status).title()
 
-currentHumidity = "HUMIDITY:"+str(one_call.current.humidity)+"%"
-currentWind = "WIND:"+str(curWind)+"MPH"
+currentHumidity = "Hum:"+str(one_call.current.humidity)+"%"
+currentWind = "Wind:"+str(curWind)+" MPH"
 currentLoc = ": City, USA"
 
 #proper text placement
