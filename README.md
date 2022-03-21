@@ -25,38 +25,47 @@ Hourly Weather Forecast (Every two hours, total of eight hours ahead)
 ![PXL_20220321_125707503](https://user-images.githubusercontent.com/10063060/159292479-1cd7e692-8db8-45ff-85c0-00bccddefe3d.jpg)
 
 # Installation
-1. Install libraries for Inky wHAT display:
+1. Enable I2C and SPI under raspi-config
+```
+sudo raspi-config
+```
+2. Get and install git
+```
+sudo apt update
+sudo apt install git
+```
+3. Install libraries for Inky wHAT display:
 ```
 curl https://get.pimoroni.com/inky | bash
 ```
-2. Install pyOWM. pyOWM is a python library that utilizes the OpenWeatherMaps APIs.
+4. Install pyOWM. pyOWM is a python library that utilizes the OpenWeatherMaps APIs.
 ```
 pip install pyowm
 ```
-3. Copy the git repo for this project
+5. Copy the git repo for this project
 ```
 git clone https://github.com/Hothomir/weather-report.git
 ```
-4. Access main.py using nano
+6. Access main.py using nano
 ```
 nano main.py
 ```
-5. Change the latitude and longitude values to desired location
+7. Change the latitude and longitude values to desired location
 ```
 lat = 39.952583
 lon = -75.165222
 ```
-6. Input the city name on the weather variable (This is used for the OneCall API from OWM)
+8. Input the city name on the weather variable (This is used for the OneCall API from OWM)
 ```
 weather = mgr.weather_at_place("Philadelphia,US").weather
 ```
-7. Run the program while in the weather-report directory
-```
-python main.py
-```
-8. Set the Location title (hackey way at the moment, but will be improved!)
+9. Set the Location title (hackey way at the moment, but will be improved!)
 ```
 currentLoc = ": Philadelphia, PA"
+```
+10. Run the program while in the weather-report directory
+```
+python main.py
 ```
 # Recurring Display Refreshes
 To get new weather information in timed intervals, I've used crontab. Crontab schedules when to run the main.py file and is flexible with how often it should be run.
