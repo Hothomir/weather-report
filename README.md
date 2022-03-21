@@ -24,7 +24,18 @@ Hourly Weather Forecast (Every two hours, total of eight hours ahead)
 - Micro SD Card (min. 8GB)
 
 # Installation
-1. 
+1. Install libraries for Inky wHAT display:
+```
+curl https://get.pimoroni.com/inky | bash
+```
+2. Install pyOWM. pyOWM is a python library that utilizes the OpenWeatherMaps APIs.
+```
+pip install pyowm
+```
+3. Copy the git repo for this project
+```
+git clone https://github.com/Hothomir/weather-report.git
+```
 
 # To-Do
 - The location printed is just a string, would be nice if the lat and lon coordinates grabbed a location to print there instead.
