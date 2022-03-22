@@ -46,24 +46,28 @@ pip install pyowm
 ```
 git clone https://github.com/Hothomir/weather-report.git
 ```
-6. Access main.py using nano
+6. Go to the weather-report directory
+```
+cd weather-report
+```
+7. Access main.py using nano
 ```
 nano main.py
 ```
-7. Change the latitude and longitude values to desired location
+8. Change the latitude and longitude values to desired location
 ```
 lat = 39.952583
 lon = -75.165222
 ```
-8. Input the city name on the weather variable (This is used for the OneCall API from OWM)
+9. Input the city name on the weather variable (This is used for the OneCall API from OWM)
 ```
 weather = mgr.weather_at_place("Philadelphia,US").weather
 ```
-9. Set the Location title (hackey way at the moment, but will be improved!)
+10. Set the Location title (hackey way at the moment, but will be improved!)
 ```
 currentLoc = ": Philadelphia, PA"
 ```
-10. Run the program while in the weather-report directory
+11. Run the program while in the weather-report directory
 ```
 python main.py
 ```
