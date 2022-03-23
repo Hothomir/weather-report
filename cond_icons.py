@@ -1,10 +1,25 @@
+# Weather Icons for Conditions
 # Python file for icon library
-# To Do:
-	# - Show moon/sun specific icons for specific times (moon from 19:00-07:00)
+
 import os, sys
 from datetime import datetime, time
 
+import configparser
+
 from PIL import Image, ImageFont, ImageDraw
+
+#config.ini file
+configObj = configparser.ConfigParser()
+configObj.read("/home/pi/weather-report/configfile.ini")
+OWMAPI = configObj["OWM_API"]
+UserLoc = configObj["Location"]
+
+api = OWMAPI["api"]
+
+lat =float(UserLoc["latitude"])
+lon =float(UserLoc["longitude"])
+city = str(UserLoc["city"])
+country = str(UserLoc["country"])
 
 #pyOWM Libraries
 from pyowm.owm import OWM
@@ -18,10 +33,10 @@ begin = time(19,0)	#begins at 7:00 PM (19:00)
 end = time(7,0)		#ends at 7:00 AM
 
 #OpenWeatherMap Integration
-owm = OWM("OWM API KEY")
+owm = OWM(api)
 mgr = owm.weather_manager()
-weather = mgr.weather_at_place("TOWN/CITY, COUNTRY").weather
-one_call = mgr.one_call(lat="PROVIDE COORDINATES", lon="PROVIDE COORDINATES")
+weather = mgr.weather_at_place(city+","+country).weather
+one_call = mgr.one_call(lat, lon)
 
 CurrCond = str(weather.status).title()
 CurrCondDetail = str(weather.detailed_status).title()
