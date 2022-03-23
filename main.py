@@ -1,10 +1,23 @@
-#TO DO:
-# - Refine how outputs are displayed
-# - Display location
+# WEATHER DISPLAY - Bartosz Jaskulski
 
 import os, sys
 from datetime import datetime, timedelta
 import cond_icons
+
+import configparser
+
+#config.ini file
+configObj = configparser.ConfigParser()
+configObj.read("/home/pi/weather-report/configfile.ini")
+OWMAPI = configObj["OWM_API"]
+UserLoc = configObj["Location"]
+
+api = OWMAPI["api"]
+
+lat =float(UserLoc["latitude"])
+lon = float(UserLoc["longitude"])
+city = str(UserLoc["city"])
+country = str(UserLoc["country"])
 
 #Inky Libraries
 from inky import InkyWHAT
@@ -35,17 +48,15 @@ EightHrsTime = (datetime.now()+timedelta(hours=8)).strftime("%H:00")
 degreeSign = u"\N{DEGREE SIGN}"
 
 #OpenWeatherMap Integration
-owm = OWM("OWM API KEY")
+owm = OWM(api)
 mgr = owm.weather_manager()
-weather = mgr.weather_at_place("ENTER TOWN/CITY HERE").weather
-lat = "PROVIDE COORDINATES" 
-lon = "PROVIDE COORDINATES"
+weather = mgr.weather_at_place(city+","+country).weather
 one_call = mgr.one_call(lat, lon)
 
 getTemp = weather.temperature("fahrenheit") #enables temp in fahrenheit
 curTemp = int(getTemp["temp"]) #get current temp
 
-#current high and low temps
+#current max and min temps
 hiTemp = int(getTemp["temp_max"])
 loTemp = int(getTemp["temp_min"])
 
@@ -88,7 +99,7 @@ currentDetailCond = str(weather.detailed_status).title()
 
 currentHumidity = "Hum:"+str(one_call.current.humidity)+"%"
 currentWind = "Wind:"+str(curWind)+" MPH"
-currentLoc = ": ENTER TOWN/CITY HERE"
+currentLoc = ": " + city
 
 #proper text placement
 projectName = "WEATHER REPORT"
