@@ -3,7 +3,7 @@
 #
 # --- PLEASE READ ---
 # This script is for Pimoroni Inky *wHAT* Displays ONLY
-# Please use main-impression.py if you have an Inky Impression
+# Please use impression-main.py if you have an Inky Impression
 # --- PLEASE READ ---
 #
 #
