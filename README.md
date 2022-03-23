@@ -20,6 +20,7 @@ Hourly Weather Forecast (Every two hours, total of eight hours ahead)
 # Hardware / Software Used
 - Raspberry Pi Zero W (Headers)
 - Inky wHAT Display [(Pimoroni Link)](https://shop.pimoroni.com/products/inky-what?variant=21441988558931)
+- Inky Impression 7-Color (for impression-main.py) [(Pimoroni Link)](https://shop.pimoroni.com/products/inky-impression-5-7?variant=32298701324371)
 - Micro SD Card (min. 8GB)
 - OpenWeatherMaps API
   -   One can get free API licenses by going to [this link](https://openweathermap.org/api)
@@ -36,7 +37,7 @@ sudo raspi-config
 sudo apt update
 sudo apt install git
 ```
-3. Install libraries for Inky wHAT display:
+3. Install libraries for Inky wHAT/Impression displays:
 ```
 curl https://get.pimoroni.com/inky | bash
 ```
@@ -69,7 +70,8 @@ country = US
 ```
 9. Run the program while in the weather-report directory
 ```
-python main.py
+Inky wHAT: python main.py
+Inky Impression: python impression-main.py
 ```
 # Recurring Display Refreshes
 To get new weather information in timed intervals, I've used crontab. Crontab schedules when to run the main.py file and is flexible with how often it should be run.
