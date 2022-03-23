@@ -17,10 +17,12 @@ Hourly Weather Forecast (Every two hours, total of eight hours ahead)
 - Future time of forecast
 - One word weather conditions 
 
-# Hardware Used
+# Hardware / Software Used
 - Raspberry Pi Zero W (Headers)
 - Inky wHAT Display [(Pimoroni Link)](https://shop.pimoroni.com/products/inky-what?variant=21441988558931)
 - Micro SD Card (min. 8GB)
+- OpenWeatherMaps API
+  -   One can get free API licenses by going to [this link](https://openweathermap.org/api)
 
 ![PXL_20220321_125707503](https://user-images.githubusercontent.com/10063060/159292479-1cd7e692-8db8-45ff-85c0-00bccddefe3d.jpg)
 
@@ -50,24 +52,22 @@ git clone https://github.com/Hothomir/weather-report.git
 ```
 cd weather-report
 ```
-7. Access main.py using nano
+7. Access configfile.ini using nano
 ```
-nano main.py
+nano configfile.ini
 ```
-8. Change the latitude and longitude values to desired location
+8. Change the values to what is preferred. Example for Philadelphia, PA:
 ```
-lat = 39.952583
-lon = -75.165222
+[OWM_API]
+api = 123456789abcdefg
+
+[Location]
+latitude = 39.952583
+longitude = -75.165222
+city = Philadelphia
+country = US
 ```
-9. Input the city name on the weather variable (This is used for the OneCall API from OWM)
-```
-weather = mgr.weather_at_place("Philadelphia,US").weather
-```
-10. Set the Location title (hackey way at the moment, but will be improved!)
-```
-currentLoc = ": Philadelphia, PA"
-```
-11. Run the program while in the weather-report directory
+9. Run the program while in the weather-report directory
 ```
 python main.py
 ```
