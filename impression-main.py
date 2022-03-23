@@ -78,7 +78,7 @@ inky_display.set_border(inky_display.WHITE)
 Location_ICON = RESOURCES + "icons/location.png"
 LocationIcon = Image.open(Location_ICON)
 
-img = Image.open("/home/pi/weather-report/resources/background/weather-report-bg-impression.png")
+img = Image.open("/home/pi/weather-report/resources/background/weather-report-bg.png")
 draw = ImageDraw.Draw(img)
 
 font_tiny = ImageFont.truetype(FT88Reg_FONT, 12)
