@@ -181,6 +181,3 @@ newsize = (600, 448) # New size for image
 im1 = img.resize(newsize) # Our new image
 inky_display.set_image(im1) # Notice im1 instead of img
 inky_display.show() # Show the image
-
-# Even though the image was resized, it is the correct size for the impression with all text and icons readable.
-# Please see the demo image in the README for more information.
