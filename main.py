@@ -35,7 +35,7 @@ EightHrsTime = (datetime.now()+timedelta(hours=8)).strftime("%H:00")
 degreeSign = u"\N{DEGREE SIGN}"
 
 #OpenWeatherMap Integration
-owm = OWM("c7f275b2d16f8329784620d02222e9ee")
+owm = OWM("OWM API KEY")
 mgr = owm.weather_manager()
 weather = mgr.weather_at_place("ENTER TOWN/CITY HERE").weather
 lat = "PROVIDE COORDINATES" 
