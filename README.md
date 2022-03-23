@@ -67,7 +67,11 @@ weather = mgr.weather_at_place("Philadelphia,US").weather
 ```
 currentLoc = ": Philadelphia, PA"
 ```
-11. Run the program while in the weather-report directory
+11. Change the same values (latitude & longitude, city name) in cond_icons.py
+```
+nano cond_icons.py
+```
+12. Run the program while in the weather-report directory
 ```
 python main.py
 ```
