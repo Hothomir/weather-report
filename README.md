@@ -89,12 +89,9 @@ crontab -e
 ```
 
 # To-Do
-- The location printed is just a string, would be nice if the lat and lon coordinates grabbed a location to print there instead.
 - Where the weather condition prints "Clear" in the image, it would be better to print the detailed condition for the current weather. However, need to see how to wrap text, as the detailed conditions print as one line and get cut off by the edge of the display.
-- Create a file where user provides coordinates, location, and API key for easy installation process.
 
 # Resources
-
 pyOWM
 https://pyowm.readthedocs.io/en/latest/#
 
