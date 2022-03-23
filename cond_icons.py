@@ -18,7 +18,7 @@ begin = time(19,0)	#begins at 7:00 PM (19:00)
 end = time(7,0)		#ends at 7:00 AM
 
 #OpenWeatherMap Integration
-owm = OWM("c7f275b2d16f8329784620d02222e9ee")
+owm = OWM("OWM API KEY")
 mgr = owm.weather_manager()
 weather = mgr.weather_at_place("TOWN/CITY, COUNTRY").weather
 one_call = mgr.one_call(lat="PROVIDE COORDINATES", lon="PROVIDE COORDINATES")
