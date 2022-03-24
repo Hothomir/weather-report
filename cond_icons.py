@@ -105,6 +105,9 @@ def CurrCondIcon():
 	if CurrCond == "Rain":
 		return RainIconOutput
 
+	if CurrCond == "Drizzle":
+		return DrizzleIconOutput
+
 	if CurrCond == "Thunderstorm":
 		if CurrCondDetail == "Thunderstorm" or "Heavy Thunderstorm" or "Ragged Thunderstorm":
 			return ThunderIconOutput
