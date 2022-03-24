@@ -92,14 +92,15 @@ def CurrCondIcon():
 		else:
 			return ClearMoonIconOutput
 
-	if CurrCondDetail == "Few Clouds":
-		if NightTime == False:
-			return FewCloudsSunIconOutput
-		else:
-			return FewCloudsMoonIconOutput
+	if CurrCond == "Clouds":
+		if CurrCondDetail == "Few Clouds":
+			if NightTime == False:
+				return FewCloudsSunIconOutput
+			else:
+				return FewCloudsMoonIconOutput
 
-	if CurrCondDetail == "Scattered Clouds" or "Broken Clouds" or "Overcast Clouds":
-		return CloudsIconOutput
+		if CurrCondDetail == "Scattered Clouds" or "Broken Clouds" or "Overcast Clouds":
+			return CloudsIconOutput
 
 	if CurrCond == "Rain":
 		return RainIconOutput
