@@ -87,17 +87,17 @@ def NightTime(begin, end, currTime=None):
 
 def CurrCondIcon():
 	if CurrCond == "Clear":
-		if NightTime == False:
-			return ClearSunIconOutput
-		else:
+		if NightTime():
 			return ClearMoonIconOutput
+		else:
+			return ClearSunIconOutput
 
 	if CurrCond == "Clouds":
 		if CurrCondDetail == "Few Clouds":
-			if NightTime == False:
-				return FewCloudsSunIconOutput
-			else:
+			if NightTime():
 				return FewCloudsMoonIconOutput
+			else:
+				return FewCloudsSunIconOutput
 
 		if CurrCondDetail == "Scattered Clouds" or "Broken Clouds" or "Overcast Clouds":
 			return CloudsIconOutput
