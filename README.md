@@ -2,6 +2,7 @@
 
 Weather display project, featuring a Inky wHAT e-ink display and a Raspberry Pi.
 - The Weather Report is meant to display the weather in a more visually pleasing layout, which will combine assets such as hourly readings, date and time, and whatever comes along.
+![PXL_20220321_125707503](https://user-images.githubusercontent.com/10063060/159292479-1cd7e692-8db8-45ff-85c0-00bccddefe3d.jpg)
 
 # Features
 Current weather information
@@ -25,8 +26,6 @@ Hourly Weather Forecast (Every two hours, total of eight hours ahead)
 - Micro SD Card (min. 8GB)
 - OpenWeatherMaps API
   -   One can get free API licenses by going to [this link](https://openweathermap.org/api)
-
-![PXL_20220321_125707503](https://user-images.githubusercontent.com/10063060/159292479-1cd7e692-8db8-45ff-85c0-00bccddefe3d.jpg)
 
 # Installation
 1. Enable I2C and SPI under raspi-config
