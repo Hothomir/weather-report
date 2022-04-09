@@ -87,14 +87,14 @@ def NightTime(begin, end, currTime=None):
 
 def CurrCondIcon():
 	if CurrCond == "Clear":
-		if NightTime():
+		if NightTime(begin, end):
 			return ClearMoonIconOutput
 		else:
 			return ClearSunIconOutput
 
 	if CurrCond == "Clouds":
 		if CurrCondDetail == "Few Clouds":
-			if NightTime():
+			if NightTime(begin, end):
 				return FewCloudsMoonIconOutput
 			else:
 				return FewCloudsSunIconOutput
