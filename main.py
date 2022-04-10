@@ -1,3 +1,4 @@
+
 # WEATHER DISPLAY - Bartosz Jaskulski
 #
 #
@@ -64,9 +65,13 @@ one_call = mgr.one_call(lat, lon)
 getTemp = weather.temperature("fahrenheit") #enables temp in fahrenheit
 curTemp = int(getTemp["temp"]) #get current temp
 
+#Current "feels like" Temperature
+feelsLike = int(getTemp["feels_like"])
+currentFeelsLike = "Feels: "+str(feelsLike)+degreeSign
+
 #current max and min temps
-hiTemp = int(getTemp["temp_max"])
-loTemp = int(getTemp["temp_min"])
+maxTemp = int(getTemp["temp_max"])
+minTemp = int(getTemp["temp_min"])
 
 #Current wind speeds
 getWind = weather.wind(unit="miles_hour")
@@ -90,8 +95,8 @@ font2 = ImageFont.truetype(VG5000_FONT, 10)
 
 currentTemp = str(curTemp)+degreeSign
 
-currentHiTemp = "High: "+str(hiTemp)+degreeSign #current temp max
-currentLoTemp ="Low: "+str(loTemp)+degreeSign #current temp min
+currentMaxTemp = "Max: "+str(maxTemp)+degreeSign #current temp max
+currentMinTemp = "Min: "+str(minTemp)+degreeSign #current temp min
 
 TwoHrTemp = str(int(one_call.forecast_hourly[2].temperature("fahrenheit").get("temp", 0))) #get temp in 2 hrs
 TwoHrCond = str(one_call.forecast_hourly[2].status)
@@ -149,11 +154,12 @@ draw.text((368, 4),TimeDate.strftime("%H:%M"), inky_display.WHITE, font2)	#Date
 draw.text((x_name, 4),projectName, inky_display.WHITE, font2)			#project name
 
 draw.text((155, 65), currentTemp, inky_display.BLACK, font_big)				#Current temp
-draw.text((292, 98), currentHiTemp, inky_display.BLACK, font_small)			#Current high temp
-draw.text((292, 116), currentLoTemp, inky_display.BLACK, font_small)			#Current low temp
+draw.text((292, 100), currentMaxTemp, inky_display.BLACK, font_small)			#Current max temp
+draw.text((292, 116), currentMinTemp, inky_display.BLACK, font_small)			#Current min temp
+draw.text((292, 70), currentFeelsLike, inky_display.BLACK, font_small)
 
-img.paste(LocationIcon, (15, 198)) 
-draw.text((35, 200), currentLoc, inky_display.BLACK, font_medium2)			#Current location
+#img.paste(LocationIcon, (15, 198)) 
+#draw.text((35, 200), currentLoc, inky_display.BLACK, font_medium2)			#Current location
 
 draw.text((x_TwoHrTemp, 246), TwoHrTemp+degreeSign, inky_display.BLACK, font_medium)	#Temp in 2 hrs
 draw.text((x_FourHrTemp, 246),FourHrTemp+degreeSign, inky_display.BLACK, font_medium)	#Temp in 4 hrs
@@ -165,7 +171,7 @@ draw.text((x_FourHrCond, 283), FourHrCond, inky_display.BLACK, font_tiny)		#Cond
 draw.text((x_SixHrCond, 283), SixHrCond, inky_display.BLACK, font_tiny)			#Condition in 6 hrs
 draw.text((x_EightHrCond, 283), EightHrCond, inky_display.BLACK, font_tiny)		#Condition in 8 hrs
 
-draw.text((x_TwoHrsTime, 239), TwoHrsTime, inky_display.BLACK, font_tiny)			#Time in 2 hrs
+draw.text((x_TwoHrsTime, 239), TwoHrsTime, inky_display.BLACK, font_tiny)		#Time in 2 hrs
 draw.text((x_FourHrsTime, 239), FourHrsTime, inky_display.BLACK, font_tiny)		#Time in 4 hrs
 draw.text((x_SixHrsTime, 239), SixHrsTime, inky_display.BLACK, font_tiny)		#Time in 6 hrs
 draw.text((x_EightHrsTime, 239), EightHrsTime, inky_display.BLACK, font_tiny)		#Time in 8 hrs
@@ -173,7 +179,7 @@ draw.text((x_EightHrsTime, 239), EightHrsTime, inky_display.BLACK, font_tiny)		#
 draw.text((292, 150), currentHumidity, inky_display.BLACK, font_small)			#Current humidity in percentage
 draw.text((292, 178), currentWind, inky_display.BLACK, font_small)		#Current wind speed in MPH
 
-draw.text((292, 65), currentCond, inky_display.BLACK, font_small)		#Current weather conditions, short
+draw.text((10, 190), currentDetailCond, inky_display.BLACK, font_medium2)		#Current weather conditions, detailed
 img.paste(cond_icons.CurrCondIcon(), (15, 60))                                  #Current Weather Icon
 
 inky_display.set_image(img)
